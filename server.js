@@ -30,7 +30,7 @@ let vaultFiles = [
 app.get('/api/dashboard', (req, res) => {
     // Piga hesabu ya jumla ya ukubwa wa ma-file yote yaliyopo
     const totalSize = vaultFiles.reduce((sum, file) => sum + file.size, 0);
-    
+
     res.json({
         status: "success",
         stats: {
@@ -108,7 +108,7 @@ app.get('/api/files/download/:id', (req, res) => {
 app.delete('/api/files/delete/:id', (req, res) => {
     const fileId = parseInt(req.params.id);
     const initialLength = vaultFiles.length;
-    
+
     vaultFiles = vaultFiles.filter(f => f.id !== fileId);
 
     if (vaultFiles.length === initialLength) {
@@ -118,9 +118,10 @@ app.delete('/api/files/delete/:id', (req, res) => {
     res.json({ status: "success", message: "Faili limefutwa kwenye kumbukumbu." });
 });
 
-// NJIA YA MSINGI (Health Check)
+// NJIA YA MSINGI (Health Check Landing Page)
 app.get('/', (req, res) => {
-    res.send("👑 JAMPAN VAULT BACKEND IS ONLINE & SECURED.");
+    // Inatuma lile faili la HTML lenye animation na redirect link ya Vercel
+    res.sendFile(__dirname + '/index.html');
 });
 
 // WASHA MTAMBO
