@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jampan Vault - Server Status</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background: #030712; color: #e2e8f0;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; overflow: hidden;
+}
+
+/* MATRIX PULSE BACKDROP */
+.bg-glow {
+    position: absolute; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(197, 3, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1; animation: glowPulse 4s infinite alternate ease-in-out;
+}
+@keyframes glowPulse { from { transform: scale(0.8); opacity: 0.5; } to { transform: scale(1.2); opacity: 1; } }
+
+/* MAIN SERVER CARD */
+.server-card {
+    background: linear-gradient(135deg, rgba(2, 28, 79, 0.25) 0%, rgba(255, 255, 255, 0.03) 100%);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 3, 55, 0.3); border-radius: 24px;
+    padding: 40px 30px; text-align: center; max-width: 400px; width: 90%;
+    z-index: 10; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* LIVE ONLINE ANIMATION RADAR */
+.radar-box {
+    position: relative; width: 80px; height: 80px; margin: 0 auto 25px auto;
+    display: flex; align-items: center; justify-content: center;
+}
+.radar-dot {
+    width: 20px; height: 20px; background: #10b981; border-radius: 50%;
+    box-shadow: 0 0 15px #10b981; z-index: 5;
+}
+.radar-wave {
+    position: absolute; width: 100%; height: 100%;
+    border: 2px solid #10b981; border-radius: 50%; opacity: 0;
+    animation: radarPulse 2s infinite linear;
+}
+.radar-wave:nth-child(2) { animation-delay: 0.6s; }
+.radar-wave:nth-child(3) { animation-delay: 1.2s; }
+
+@keyframes radarPulse {
+    0% { transform: scale(0.2); opacity: 0.8; }
+    50% { opacity: 0.4; }
+    100% { transform: scale(1.1); opacity: 0; }
+}
+
+h1 {
+    font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 8px;
+    background: linear-gradient(to right, #ffffff, #C50337);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.status-text {
+    font-size: 0.85rem; color: #10b981; font-weight: bold;
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+p.desc { font-size: 0.85rem; color: #64748b; line-height: 1.6; margin-bottom: 30px; }
+
+/* TELEMTRY CHIP */
+.chip {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    padding: 8px 15px; border-radius: 12px; font-family: monospace;
+    font-size: 0.75rem; color: #94a3b8; margin-bottom: 30px;
+}
+
+/* PREMIUM VISIT BUTTON */
+.btn-visit {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #021C4F, #C50337); border: none;
+    color: white; padding: 14px 28px; border-radius: 14px; cursor: pointer;
+    font-weight: bold; font-size: 0.95rem; text-decoration: none; width: 100%;
+    transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(197, 3, 55, 0.3);
+}
+.btn-visit:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(197, 3, 55, 0.6);
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="server-card">
+    <div class="radar-box">
+        <div class="radar-dot"></div>
+        <div class="radar-wave"></div>
+        <div class="radar-wave"></div>
+        <div class="radar-wave"></div>
+    </div>
+
+    <h1>JAMPAN CORE</h1>
+    <div class="status-text">
+        <span>●</span> CLUSTER ONLINE
+    </div>
+
+    <p class="desc">Mtambo wa backend upo macho na unafanya kazi kiusalama. Mifumo yote ya mawasiliano ya Telegram ipo tayari.</p>
+
+    <div class="chip">
+        SECURE STATUS: 200 OK
+    </div>
+
+    <a href="https://jampanvault.vercel.app" target="_blank" class="btn-visit">
+        Visit Frontend Vault 🚀
+    </a>
+</div>
+
+</body>
+</html>
